@@ -21,7 +21,7 @@ function TechnologySection({
   onRemoveAll,
 }: TechnologySectionProps) {
   return (
-    <section id="technologies" className="bg-slate-50">
+    <section id="technologies" className="scroll-mt-20 bg-slate-50">
       <div className="mx-auto max-w-7xl px-4 py-16 lg:py-20">
         {/* Section header */}
         <div className="mb-10 text-center">
