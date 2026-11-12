@@ -1,4 +1,3 @@
-// Footer link groups are defined ONCE here and rendered with a nested .map().
 const footerGroups = [
   {
     title: 'Product',
@@ -35,9 +34,7 @@ function Footer() {
   return (
     <footer className="border-t border-slate-200 bg-white">
       <div className="mx-auto max-w-7xl px-4 py-12">
-        {/* Top area: brand block + three link groups */}
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
-          {/* Brand block */}
           <div className="lg:col-span-2">
             <a href="#home" className="flex items-center gap-2 text-xl font-bold">
               <span className="bg-brand flex h-9 w-9 items-center justify-center rounded-lg text-sm font-bold text-white">
@@ -67,7 +64,6 @@ function Footer() {
             </div>
           </div>
 
-          {/* Link groups: outer map = groups, inner map = links in each group */}
           {footerGroups.map((group) => (
             <div key={group.title}>
               <h3 className="text-sm font-bold tracking-wide text-slate-900 uppercase">
@@ -86,7 +82,6 @@ function Footer() {
           ))}
         </div>
 
-        {/* Bottom bar */}
         <div className="mt-12 flex flex-col items-center gap-4 border-t border-slate-200 pt-6 text-sm text-slate-400 md:flex-row md:justify-between">
           <p>© 2026 Dev Stack. All rights reserved.</p>
           <div className="flex gap-6">

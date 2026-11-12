@@ -1,4 +1,3 @@
-// Nav links are defined ONCE here and reused by the desktop and mobile menus.
 const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'Technologies', href: '#technologies' },
@@ -7,11 +6,9 @@ const navLinks = [
   { label: 'Contact', href: '#' },
 ]
 
-// The link that is shown as "active" (pink). Fixed for now — no state yet.
 const activeHref = '#home'
 
 function Navbar() {
-  // Logo is used in two places (desktop left, mobile center), so keep it in one variable.
   const logo = (
     <a href="#home" className="flex items-center gap-2 text-lg font-bold sm:text-xl">
       <span className="bg-brand flex h-9 w-9 items-center justify-center rounded-lg text-sm font-bold text-white">
@@ -27,7 +24,6 @@ function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white">
       <nav className="mx-auto flex h-20 max-w-7xl items-center px-4">
-        {/* Left: hamburger (mobile) + logo (desktop) */}
         <div className="flex flex-1 items-center">
           <div className="dropdown lg:hidden">
             <div
@@ -71,10 +67,8 @@ function Navbar() {
           <div className="hidden lg:flex">{logo}</div>
         </div>
 
-        {/* Center: logo (mobile only) */}
         <div className="flex flex-1 justify-center lg:hidden">{logo}</div>
 
-        {/* Center: nav links (desktop only) */}
         <ul className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => (
             <li key={link.label}>
@@ -92,7 +86,6 @@ function Navbar() {
           ))}
         </ul>
 
-        {/* Right: Sign In + Sign Up */}
         <div className="flex flex-1 items-center justify-end gap-1 sm:gap-2">
           <button className="btn btn-ghost btn-sm lg:btn-md font-medium text-slate-700">
             Sign In

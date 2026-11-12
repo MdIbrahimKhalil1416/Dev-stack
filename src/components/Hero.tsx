@@ -4,7 +4,6 @@ function Hero() {
   return (
     <section id="home">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 lg:grid-cols-2 lg:py-24">
-        {/* Left column: heading, text, buttons */}
         <div className="text-center lg:text-left">
           <h1 className="text-4xl leading-tight font-extrabold text-slate-900 md:text-5xl lg:text-6xl">
             Build Your Ideal
@@ -32,7 +31,6 @@ function Hero() {
           </div>
         </div>
 
-        {/* Right column: banner image (shows below the text on mobile) */}
         <div className="flex justify-center">
           <img
             src={banner}

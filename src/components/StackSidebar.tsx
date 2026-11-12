@@ -31,7 +31,6 @@ function StackSidebar({ stack, onRemove, onRemoveAll }: StackSidebarProps) {
         )}
       </div>
 
-      {/* Remove All is only rendered when the stack has items */}
       {!isEmpty && (
         <button
           type="button"

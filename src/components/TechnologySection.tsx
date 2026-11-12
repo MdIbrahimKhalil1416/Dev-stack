@@ -2,7 +2,6 @@ import TechnologyCard from './TechnologyCard'
 import StackSidebar from './StackSidebar'
 import type { Technology } from '../types/technology'
 
-// The props this component receives from App
 interface TechnologySectionProps {
   technologies: Technology[]
   loading: boolean
@@ -23,7 +22,6 @@ function TechnologySection({
   return (
     <section id="technologies" className="scroll-mt-20 bg-slate-50">
       <div className="mx-auto max-w-7xl px-4 py-16 lg:py-20">
-        {/* Section header */}
         <div className="mb-10 text-center">
           <h2 className="text-3xl font-extrabold text-slate-900 md:text-4xl">
             Explore the <span className="text-brand">Technologies</span>
@@ -33,9 +31,7 @@ function TechnologySection({
           </p>
         </div>
 
-        {/* Main layout: 12-column grid on desktop — cards take 9, sidebar takes 3 */}
         <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-12">
-          {/* Cards area */}
           <div className="lg:col-span-9">
             {loading ? (
               <div className="flex flex-col items-center justify-center gap-3 py-16">
@@ -48,7 +44,7 @@ function TechnologySection({
                   <TechnologyCard
                     key={tech.id}
                     technology={tech}
-                    isAdded={stack.some((t) => t.id === tech.id)}
+                    isAdded={stack.some((item) => item.id === tech.id)}
                     onAdd={onAdd}
                   />
                 ))}
@@ -56,7 +52,6 @@ function TechnologySection({
             )}
           </div>
 
-          {/* Sidebar area (shows below the cards on mobile/tablet) */}
           <div className="lg:col-span-3">
             <StackSidebar stack={stack} onRemove={onRemove} onRemoveAll={onRemoveAll} />
           </div>
