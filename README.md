@@ -64,28 +64,28 @@ Then open the local URL shown in the terminal (usually `http://localhost:5173`).
 
 ### 1. What is JSX, and why is it used in React?
 
-_Answer: (write in your own words)_
+JSX is a syntax that lets us write HTML-like code inside JavaScript. For example, `return <h1>Dev Stack</h1>` in a component. React uses JSX because it makes the UI easy to read and write, and we can put JavaScript values inside it with curly braces, like `{technology.name}`. Vite converts JSX into normal JavaScript before the browser runs it.
 
 ### 2. What is the difference between props and state?
 
-_Answer: (write in your own words)_
+Props are values a parent component passes to a child, like arguments to a function. The child can only read them, not change them. For example, `TechnologyCard` gets one `technology` object as a prop. State is data that a component owns and can change over time. When state changes, React re-renders the component. For example, `stack` in `App` is state, because it changes when the user adds or removes a technology.
 
 ### 3. What does the `useState` hook do, and where did you use it in this project?
 
-_Answer: (write in your own words)_
+`useState` creates a piece of state and gives back two things: the current value and a function to update it. I used it three times in `App.tsx`: `technologies` (the list loaded from the JSON file), `loading` (true until the data is loaded, so the spinner shows), and `stack` (the technologies the user selected).
 
 ### 4. What does the `useEffect` hook do, and why did you need it to load the JSON data?
 
-_Answer: (write in your own words)_
+`useEffect` runs code after the component appears on the screen. With an empty dependency array `[]`, it runs only once. Loading the JSON file is a side effect that takes time, so it should not run during rendering. Inside `useEffect` I load `technologies.json` with a dynamic `import()`. When it finishes, I save the data with `setTechnologies` and set `loading` to `false`, so the spinner is replaced by the cards.
 
 ### 5. Why does every item in a `.map()` list need a unique `key` prop?
 
-_Answer: (write in your own words)_
+React uses the `key` to know which item is which when the list changes. With a unique key, React can update, add, or remove only the correct item instead of redrawing everything or mixing items up. I used `key={tech.id}` for the cards and stack items, because each technology has a unique id that never changes, unlike the array index.
 
 ### 6. What is conditional rendering? Show one place you used it (example: the empty stack message).
 
-_Answer: (write in your own words)_
+Conditional rendering means showing different UI depending on a condition. In `StackSidebar.tsx`, if the stack is empty I show "Your stack is empty.", otherwise I show the list of selected technologies: `isEmpty ? <empty message> : <list>`. I also show the "Remove All" button only when the stack is not empty with `{!isEmpty && <button>...}`, and the card button shows "✓ Added to Stack" when `isAdded` is true.
 
 ### 7. How do you pass data from a parent component to a child component, and how does a child send something back to the parent?
 
-_Answer: (write in your own words)_
+A parent passes data to a child with props. For example, `App` passes `stack` to `TechnologySection`, which passes it on to `StackSidebar`. A child cannot change the parent's state directly, so the parent also passes a function as a prop. The child calls that function to send something back. For example, `App` passes `handleAdd` as `onAdd`, and `TechnologyCard` calls `onAdd(technology)` when the button is clicked. Then `App` updates the `stack` state.
