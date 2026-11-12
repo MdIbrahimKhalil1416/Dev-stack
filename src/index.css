@@ -1,2 +1,25 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+/* Theme: make Plus Jakarta Sans the default sans font (used by font-sans and the page body) */
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Brand gradient: the ONLY place the gradient colors are written. Change them here to update the whole site. */
+:root {
+  --brand-gradient: linear-gradient(90deg, #f97316, #ec4899, #7c3aed);
+}
+
+/* bg-brand: gradient background for buttons and the logo box */
+@utility bg-brand {
+  background-image: var(--brand-gradient);
+}
+
+/* text-brand: gradient-colored text (the gradient is clipped to the letter shapes) */
+@utility text-brand {
+  background-image: var(--brand-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
