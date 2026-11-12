@@ -6,9 +6,20 @@ import type { Technology } from '../types/technology'
 interface TechnologySectionProps {
   technologies: Technology[]
   loading: boolean
+  stack: Technology[]
+  onAdd: (tech: Technology) => void
+  onRemove: (id: string) => void
+  onRemoveAll: () => void
 }
 
-function TechnologySection({ technologies, loading }: TechnologySectionProps) {
+function TechnologySection({
+  technologies,
+  loading,
+  stack,
+  onAdd,
+  onRemove,
+  onRemoveAll,
+}: TechnologySectionProps) {
   return (
     <section id="technologies" className="bg-slate-50">
       <div className="mx-auto max-w-7xl px-4 py-16 lg:py-20">
@@ -34,7 +45,12 @@ function TechnologySection({ technologies, loading }: TechnologySectionProps) {
             ) : (
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {technologies.map((tech) => (
-                  <TechnologyCard key={tech.id} technology={tech} />
+                  <TechnologyCard
+                    key={tech.id}
+                    technology={tech}
+                    isAdded={stack.some((t) => t.id === tech.id)}
+                    onAdd={onAdd}
+                  />
                 ))}
               </div>
             )}
@@ -42,7 +58,7 @@ function TechnologySection({ technologies, loading }: TechnologySectionProps) {
 
           {/* Sidebar area (shows below the cards on mobile/tablet) */}
           <div className="lg:col-span-3">
-            <StackSidebar />
+            <StackSidebar stack={stack} onRemove={onRemove} onRemoveAll={onRemoveAll} />
           </div>
         </div>
       </div>

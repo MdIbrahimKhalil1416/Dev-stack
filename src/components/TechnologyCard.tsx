@@ -3,9 +3,11 @@ import type { Technology } from '../types/technology'
 // The props this component receives: one technology object
 interface TechnologyCardProps {
   technology: Technology
+  isAdded: boolean
+  onAdd: (tech: Technology) => void
 }
 
-function TechnologyCard({ technology }: TechnologyCardProps) {
+function TechnologyCard({ technology, isAdded, onAdd }: TechnologyCardProps) {
   const { name, icon, badge, description, category, difficulty, rating } = technology
 
   return (
@@ -41,9 +43,15 @@ function TechnologyCard({ technology }: TechnologyCardProps) {
       <div className="mt-auto pt-5">
         <button
           type="button"
-          className="w-full rounded-lg bg-slate-900 py-2.5 text-sm font-medium text-white transition hover:bg-slate-700"
+          onClick={() => onAdd(technology)}
+          disabled={isAdded}
+          className={
+            isAdded
+              ? 'w-full cursor-not-allowed rounded-lg border border-green-200 bg-green-50 py-2.5 text-sm font-medium text-green-700'
+              : 'w-full rounded-lg bg-slate-900 py-2.5 text-sm font-medium text-white transition hover:bg-slate-700'
+          }
         >
-          Add to Stack
+          {isAdded ? '✓ Added to Stack' : 'Add to Stack'}
         </button>
       </div>
     </div>
